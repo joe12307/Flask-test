@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ dropzone.load_css() }}
+  {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
+<meta charset="big5">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>在記事本中開啟轉存utf-8</title>
+<style>
+html{
+	font-size:10px;
+}
+body{
+	margin:0px auto;
+	font-family:"微軟正黑體";
+	max-width:1024px;
+	min-width:420px;
+
+}
+ul,li,h1,h2,h3,h4,h5,h6,p{
+	margin:0px;
+	list-style:none;
+	padding:0px;
+	font-weight:normal;
+}
+#navbar{
+	width:100%;
+	background:#09b6a4;
+	border-bottom:4px #fbcc10 solid;
+}
+#logo{
+	padding:10px 0px 10px 30px;
+}
+#menuIcon{
+	display:none;
+}
+ul{
+	display:block;
+	float:right;
+	padding:50px 20px 0px 0px;
+}
+ul li{
+	display:block;
+	float:left;
+	margin-left:20px;
+	font-size:1.8rem;
+}
+a{
+	color:#FFF;
+	text-decoration:none;
+	font-size:1.6rem;
+}
+#banner{
+	position:relative;
+	text-align:center;
+	color:#FFF;
+}
+#banner img{
+	width:100%;
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:-10;
+}
+#banner h1{
+	padding-top:60px;
+	font-size:4.5rem;
+}
+#banner h4{
+	padding-top:20px;
+	padding-bottom:30px;
+	display:block;
+	width:22em;
+	font-size:1.8rem;
+	line-height:2.5rem;
+	margin:0px auto;
+}
+.button{
+	border:1px #FFF solid;
+	width:8em;
+	text-align:center;
+	line-height:2em;
+	border-radius:5px;
+	margin:0px auto;
+	color:#FFF;
+	font-size:1.8em;
+	cursor:pointer;
+}
+#content{
+	width:100%;
+	background:#7e6b5a;
+	color:#FFF;
+	padding:30px 0px;
+}
+#introduction{
+	width:95%;
+	margin:0px auto;
+}
+#introduction h3{
+	font-size:2.5rem;
+}
+#introduction p{
+	font-size:1.6rem;
+	text-indent:2em;
+	text-align:justify;
+	margin:5px 0px;
+}
+.designer{
+	float:left;
+	width:25%;
+	text-align:center;
+	margin-top:10px;
+	background:rgba(248,215,76,0.50);
+	padding:15px 0px;
+}
+.designer h4{
+	font-size:1.6rem;
+}
+.cle{
+	clear:both;
+}
+footer{
+	background:#013246;
+	line-height:2rem;
+	text-align:center;
+	padding:20px 0px;
+	font-size:1.1rem;
+	color:#FFF;
+}
+@media screen and (max-width: 768px){
+#navbar ul{
+	display:none;
+	float:none;
+	padding:10px;
+	margin-bottom:30px;
+}
+#menuIcon{
+	display:block;
+	float:right;
+	margin:30px 20px 0px 0px;
+	cursor:pointer;
+}
+#banner h1{
+	padding-top:30px;
+	font-size:3.6rem;
+}
+#banner h4{
+	padding-top:10px;
+	font-size:1.5rem;
+	line-height:1.6em;
+	padding-bottom:20px;
+}
+.button{
+	width:6em;
+	text-align:center;
+	line-height:1.5em;
+	border-radius:5px;
+	margin:0px auto;
+	color:#FFF;
+	font-size:1.5em;
+}
+#introduction{
+	width: 35%;
+	float:left;
+	margin-left:5%;
+}
+#designers{
+	width: 60%;
+	float:right;
+	padding-top:40px;
+}
+.designer{
+	width: 50%;
+	margin-bottom: 20px;
+	margin-top:0px;
+	background:rgba(122,255,248,0.50);
+}
+}
+@media screen and (max-width: 481px){
+#navbar ul{
+	padding:0px;
+}
+#navbar ul li{
+	display:block;
+	width:100%;
+	float:none;
+	font-size:2rem;
+	line-height:2.5rem;
+	margin:0px;
+	padding-left:6%;
+}
+#navbar ul li:hover{
+	background:#20F9DB;
+	background-origin:padding-box;
+}
+#banner h1{
+	padding-top:20px;
+	font-size:2.8rem;
+}
+#banner h4{
+	padding-top:10px;
+	font-size:1.4rem;
+	line-height:1.4em;
+	padding-bottom:20px;
+}
+#introduction{
+	width:95%;
+	float:none;
+	margin:0px auto;
+}
+#designers{
+	width:95%;
+	float:none;
+	margin:0px auto;
+}
+.designer{
+	width: 100%;
+	margin-bottom: 2rem;
+	text-align:left;
+	background:rgba(103,10,12,0.50);
+}
+.designer img{
+	float:left;
+	margin-right:1rem;
+}
+.designer:hover{
+	background:RGBA(255,255,255,0.3);
+	cursor:pointer;
+}
+}
+#back-to-top{
+      position:fixed;
+      bottom:50px;
+      right:3%;
+}
+#back-to-top a{
+      text-align:center;
+      text-decoration:none;
+      color:rgba(255,255,255,0.2);
+      display:block;
+      width:80px;
+      -moz-transition:color 1s;
+      -webkit-transition:color 1s;
+      -o-transition:color 1s;
+}
+#back-to-top a:hover{
+      color:rgba(255,255,255,0.5);
+}
+#back-to-top a span{
+      background:RGBA(255,255,255,0.2) url(images/top.png) no-repeat center center;
+      border-radius:6px;
+      display:block;
+      height:80px;
+      width:80px;
+      margin-bottom:5px;
+      -moz-transition:background 1s;
+      -webkit-transition:background 1s;
+      -o-transition:background 1s;
+}
+#back-to-top a:hover span{
+      background:rgba(58,228,243,0.4) url(images/top.png) no-repeat center center;
+}
+</style>
+<script src="jquery-2.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+		$("#banner").height($("#banner").width()*0.426);
+		$("#menuIcon,#navbar ul li").click(function() {
+                if ($("#menuIcon").is(":visible")) {
+                    $("#navbar ul").toggle(200);
+                };
+        });
+		$("#back-to-top").hide();
+		$(function () {
+			$(window).scroll(function(){
+				if ($(window).scrollTop()>100){
+					$("#back-to-top").fadeIn(700);
+				}
+				else
+					{
+						$("#back-to-top").fadeOut(700);
+					}
+			});
+			$("#back-to-top").click(function(){
+				$('body,html').animate({scrollTop:0},1000);
+				return false;
+			});
+		});
+		if($(window).width()>768){
+			$("#introduction").hide();
+		$(".button").click(function(){
+			$("#introduction").toggle(200);
+		})
+		}
+});
+$(window).resize(function() {
+	$("#banner").height($("#banner_img").height());
+	if (!$("#navbar ul").is(":visible")) {
+        $('#navbar ul').attr('style', function(i, style){
+            return style.replace(/display[^;]+;?/g, '');
+        });
+    };
+});
+</script>
+</head>
+
+<body>
+	<div id="navbar">
+    	<img src="images/logo.png" id="logo">
+        <div id="menuIcon"><img src="images/menuIcon.png"></div>
+        <ul>
+        	<li><a href="#">首頁</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+        <div class="cle"></div>
+    </div>
+    <div id="banner">
+        <h1>創意，源於生活但高於生活</h1>
+    	<h4>本公司專注於廣告、多媒體、網頁等創意設計，由國內外著名設計師組成的設計團隊，秉承客戶優先的精神，歡迎更多專才加盟</h4>
+        <div class="button">加入我們</div>
+        <img id="banner_img" src="images/banner.png">
+    </div>
+
+    <div id="content">
+        <div>
+            {{ dropzone.create(action='upload') }}
+            <button id="upload-btn">Upload</button>
+            {{ dropzone.load_js() }}
+            {{ dropzone.config(custom_init='dz = this;document.getElementById("upload-btn").addEventListener("click", function handler(e) {dz.processQueue();});',
+                                custom_options='autoProcessQueue: false, addRemoveLinks: true, parallelUploads: 20,') }}
+        </div>
+        <div id="designers">
+    		<div class="designer">
+        		<img src="images/designer_01.png">
+            	<h4>Emmanuel</h4>
+            	<h4>總設計師</h4>
+    		</div>
+        	<div class="designer">
+        		<img src="images/designer_02.png">
+            	<h4>陳家榮</h4>
+            	<h4>平面設計總監</h4>
+    		</div>
+        	<div class="designer">
+        		<img src="images/designer_03.png">
+            	<h4>黎淑芬</h4>
+            	<h4>創意企劃專員</h4>
+    		</div>
+        	<div class="designer">
+        		<img src="images/designer_04.png">
+            	<h4>宮川久保</h4>
+            	<h4>多媒體設計師</h4>
+    		</div>
+        </div>
+        <div class="cle"></div>
+    </div>
+    <footer>
+    	<h4>&copy;BEST CREATION  DESIGE.ALLRIGHT RESEAVED.版權所有 侵權必究</h4>
+    	<h4>洽談電話:(02)89512596 聯絡地址：11072 台北市信義區光復南路999號</h4>
+    </footer>
+    <p id="back-to-top"><a href="#top"><span></span>跳至頂部</a></p>
+</body>
+</html>

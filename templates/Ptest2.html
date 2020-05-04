@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 250px;') }}
+    <title>樹種影像辨識</title>
+
+<style>
+    body{
+    background-image:url("http://www.lavendercottage.com.tw/lavendercottage2016/images/stroke01_00.jpg");
+    }
+</style>
+</head>
+<body>
+    {{ dropzone.create(action='upload') }}
+    <button id="upload-btn">Upload</button>
+    {{ dropzone.load_js() }}
+    {{ dropzone.config(custom_init='dz = this;document.getElementById("upload-btn").addEventListener("click", function handler(e) {dz.processQueue();});',
+                        custom_options='autoProcessQueue: false, addRemoveLinks: true, parallelUploads: 20,') }}
+   <form id="form1" name="form1" method="post" action="/SegNet">
+   <input type="submit" name="S" value="SegNet"/>
+   </form>
+   <form id="form2" name="form2" method="post" action="/ResNet">
+   <input type="submit" name="R" value="ResNet"/>
+   </form>
+   <form id="form3" name="form3" method="post" action="/VGG">
+   <input type="submit" name="V" value="VGG"/>
+   </form>
+
+</body>
+</html>
